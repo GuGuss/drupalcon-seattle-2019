@@ -15,3 +15,21 @@
 "https://www.{default}/":
     type: redirect
     to: "https://api.{default}/"
+
+https://{default}/:
+  to: http://{default}/
+  type: redirect
+
+http://{default}/:
+  cache:
+    cookies:
+    - '*'
+    default_ttl: 0
+    enabled: true
+    headers:
+    - Accept
+    - Accept-Language
+  ssi:
+    enabled: false
+  type: upstream
+  upstream: ui:http
