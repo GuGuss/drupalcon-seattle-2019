@@ -9,6 +9,7 @@
     "buildenvvar": "platform-var dist"
   },
   "dependencies": {
+    "bootstrap-vue": "^2.0.0-rc.18",
     "core-js": "^2.6.5",
     "platformsh_variables": "^1.0.5",
     "vue": "^2.6.6",

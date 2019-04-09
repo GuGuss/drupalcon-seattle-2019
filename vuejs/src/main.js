@@ -4,7 +4,11 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import Home from './components/Home'
 import platformVar from 'platformsh_variables'
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+Vue.use(BootstrapVue)
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
