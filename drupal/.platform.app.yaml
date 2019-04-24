@@ -44,6 +44,8 @@ build:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
+    build: |
+        curl -sS https://platform.sh/cli/installer | php
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
         set -e
@@ -116,3 +118,10 @@ crons:
     drupal:
         spec: '*/20 * * * *'
         cmd: 'cd web ; drush core-cron'
+    renewcert:
+        # Force a redeploy at 10 am (UTC) on the 1st and 15th of every month.
+        spec: '0 10 1,15 * *'
+        cmd: |
+            if [ "$PLATFORM_BRANCH" = master ]; then
+                platform redeploy --yes --no-wait
+            fi

@@ -38,5 +38,15 @@ hooks:
       set -e
       yarn install
       npm run build
+      curl -sS https://platform.sh/cli/installer | php
     deploy: |
       npm run buildenvvar
+
+crons:
+    renewcert:
+        # Force a redeploy at 10 am (UTC) on the 1st and 15th of every month.
+        spec: '0 10 1,15 * *'
+        cmd: |
+            if [ "$PLATFORM_BRANCH" = master ]; then
+                platform redeploy --yes --no-wait
+            fi
